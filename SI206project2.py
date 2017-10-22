@@ -26,8 +26,10 @@ from bs4 import BeautifulSoup
 
 ## TODO finish
 def find_urls(s):
+    ##Splitting strings by spaces
     words = s.split(" ")
     urllst = []
+    ##Looping through list of words and identifying URLs based on having both "http" and ".com" or ".co"
     for x in words:
         if ("http" in x) and ((".com" in x) or (".co" in x)):
             urllst.append(x)
@@ -46,7 +48,7 @@ def grab_headlines():
     ## Making file into BeautifulSoup object
     soup = BeautifulSoup(mdurl1, "html.parser")
     mostread = []
-    ##Itering through the correct div class for Most Read section and returning list of headlines by simultaneously separating it into a list.
+    ##Iterating through the correct div class for Most Read section and returning list of headlines by simultaneously separating it into a list.
     for strings in soup.find_all("div", class_="view view-most-read view-id-most_read view-display-id-panel_pane_1 view-dom-id-99658157999dd0ac5aa62c2b284dd266"):
         return strings.get_text().strip().split('\n')
 
